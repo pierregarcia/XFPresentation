@@ -1,0 +1,74 @@
+﻿```xml
+<Manifest>
+  <AgentType>iOSUnified_Forms</AgentType>
+  <Resources />
+  <TimeoutSeconds>0</TimeoutSeconds>
+</Manifest>
+```
+```csharp
+// Sketch your next great idea!
+
+using Xamarin.Forms;
+
+var data = new List<Tuple<UriImageSource, string, string>> {
+    Tuple.Create (new UriImageSource { Uri = new Uri ("http://bit.ly/1s07h2W") }, "Miguel", "CTO and Co-founder"),
+    Tuple.Create (new UriImageSource { Uri = new Uri ("http://bit.ly/1rYGvGU") }, "Nat", "CEO and Co-founder"),
+    Tuple.Create (new UriImageSource { Uri = new Uri ("http://bit.ly/1EhFsao") }, "Stephanie", "SVP of Sales and Customer Success"),
+    Tuple.Create (new UriImageSource { Uri = new Uri ("http://bit.ly/1oIYpso") }, "Joanne", "VP of Marketing"),
+    Tuple.Create (new UriImageSource { Uri = new Uri ("http://bit.ly/10CbVZE") }, "Joseph", "Director of Developer Relations and Co-founder"),
+    Tuple.Create (new UriImageSource { Uri = new Uri ("http://bit.ly/1vCRbKh ") }, "Rob", "VP of Business Development"),
+    Tuple.Create (new UriImageSource { Uri = new Uri ("http://bit.ly/1rPp1vm") }, "Bryan", "Vice President of Education Services"),
+    Tuple.Create (new UriImageSource { Uri = new Uri ("http://bit.ly/1sXguu1") }, "Jason", "Team Lead - Xamarin.Forms"),
+};
+
+var searchBar = new SearchBar { Placeholder = "Search ..." };
+var template = new DataTemplate (() => {
+
+    var image = new Image {
+        WidthRequest = 100,
+        HeightRequest = 100
+    };
+    image.SetBinding (Image.SourceProperty, "Item1");
+
+    var nameLabel = new Label ();
+    nameLabel.SetBinding (Label.TextProperty, "Item2");
+
+    var titleLabel = new Label ();
+    titleLabel.SetBinding (Label.TextProperty, "Item3");
+
+    var textLayout = new StackLayout {
+        Children = { nameLabel, titleLabel }
+    };
+
+    var cellLayout = new StackLayout {
+        Padding = 10,
+        Orientation = StackOrientation.Horizontal,
+        Children = { image, textLayout }
+    };
+
+    var cell = new ViewCell {
+        View = cellLayout,
+    };
+
+    return cell;
+});
+
+var listView = new ListView {
+    ItemTemplate = template,
+    ItemsSource = data,
+    RowHeight = 100
+};
+
+var layout = new StackLayout {
+    Children = {
+        searchBar,
+        listView
+    }
+};
+
+RootPage.Children.Add(new ContentPage {
+    Padding = new Thickness (0, 20, 0, 0),
+    Content = layout
+});
+```
+

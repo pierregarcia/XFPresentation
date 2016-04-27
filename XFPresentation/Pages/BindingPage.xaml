@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="XFPresentation.BindingPage"
+             xmlns:converters="clr-namespace:XFPresentation;assembly=XFPresentation">
+      <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:VisibilityConverter x:Key="Visible" />
+
+              <OnPlatform x:Key="textColor"
+                  x:TypeArguments="Color"
+                  iOS="Blue"
+                  Android="Aqua" />
+
+               <OnPlatform x:Key="padding" 
+                  x:TypeArguments="Thickness"
+                  iOS="10, 20, 0, 0"
+                  Android="5, 40, 0, 0" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+     <StackLayout
+        Padding="{StaticResource padding}"
+        Spacing="0"
+        Orientation="Vertical"
+        VerticalOptions="FillAndExpand" > 
+         <StackLayout
+            Orientation="Horizontal"
+            VerticalOptions="FillAndExpand" > 
+            <Button
+                BackgroundColor="Blue"
+                Text="Change Visibility"
+                VerticalOptions="StartAndExpand"
+                HorizontalOptions="Center"
+                Command="{Binding ChangeVisibility}" /> 
+            <Label
+                TextColor="{StaticResource textColor}"
+                Text="{Binding LabelTitle}"
+                IsVisible="{Binding LabelTitle, Converter={StaticResource Visible}}"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="Center" /> 
+            </StackLayout>
+        </StackLayout>
+
+</ContentPage>

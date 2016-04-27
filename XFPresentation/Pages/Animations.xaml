@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="XFPresentation.Animations">
+     <StackLayout
+            HorizontalOptions="Fill"
+            Padding="15,50,15,0"> 
+            <BoxView
+                HorizontalOptions="Center"
+                VerticalOptions="CenterAndExpand"
+                x:Name="rect"
+                HeightRequest="50"
+                WidthRequest="50"
+                BackgroundColor="Blue" />
+            <BoxView
+                HorizontalOptions="Center"
+                VerticalOptions="CenterAndExpand"
+                x:Name="rectFade"
+                HeightRequest="50"
+                WidthRequest="50"
+                BackgroundColor="Red" />
+            <BoxView
+                HorizontalOptions="Start"
+                VerticalOptions="CenterAndExpand"
+                x:Name="rectLayout"
+                HeightRequest="50"
+                WidthRequest="50"
+                BackgroundColor="Green" />
+        </StackLayout>
+</ContentPage>
